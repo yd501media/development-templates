@@ -194,7 +194,7 @@ Each PR must include verification details:
 * Added or updated tests
 * Manual verification steps, if applicable
 
-"Not tested" is not acceptable without justification.
+The bare statement "Not tested" is not acceptable without justification; for documentation-only PRs, explicitly state "Not tested (documentation-only changes)".
 
 ---
 
