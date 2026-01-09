@@ -71,7 +71,10 @@ Testing is mandatory for changes affecting behavior.
 
 Rules:
 
-* Add or update unit tests for all business logic changes
+* Unit tests are required for all business logic changes
+* Integration tests are required when changes affect external dependencies or system boundaries
+* E2E tests are required only for critical paths
+* Bug fixes must include regression tests
 * Tests must clearly express intent
 * Do not remove existing tests without explanation
 
