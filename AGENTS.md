@@ -51,6 +51,16 @@ Architecture rules:
 * Business logic must be separated from infrastructure or framework code
 * Do not introduce cross-layer dependencies
 
+## Coding Standards (Lint/Format)
+
+* Style source of truth is lint/format config files in the repo (e.g., .eslintrc, .prettierrc, pyproject.toml, .flake8, .golangci.yml)
+* Linting and formatting are mandatory for all code changes
+* JavaScript/TypeScript: ESLint + Prettier
+* Python: Black + Flake8
+* Go: gofmt + golangci-lint
+* CI must run lint/format; failures must be fixed before merge
+* Exceptions require explicit justification
+
 ---
 
 ## 4. Change Output Format
