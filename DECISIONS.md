@@ -32,7 +32,13 @@ This document records decisions made during the initial setup of AGENTS.md.
 
 ## Dependency Review Criteria
 
-- Necessity, maintenance, security, impact, compatibility, rollback.
+- For each new or updated dependency, reviewers must consider:
+- Necessity: Is this dependency required, or can the need be met with existing code or standard libraries?
+- Maintenance: Is the project actively maintained, with a healthy ecosystem and reasonable release cadence?
+- Security: Are there known vulnerabilities, a clear security policy, and a track record of timely fixes?
+- Impact: What is the effect on performance, bundle size, operability, complexity, and licensing?
+- Compatibility: Does it work with our supported runtimes, platforms, and versions, and fit our architecture?
+- Rollback: How easy is it to remove, pin, or replace if issues arise (including data or API migration paths)?
 
 ## Exception Handling
 
