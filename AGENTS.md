@@ -61,6 +61,25 @@ Architecture rules:
 * CI must run lint/format; failures must be fixed before merge
 * Exceptions require explicit justification
 
+## Review Scope by Change Size
+
+Change size is determined by impact and risk, not only file/line count.
+
+Size guidelines:
+* Small: 1–2 files, localized change, no external I/O or data model change, no new behavior
+* Medium: 3–10 files, logic changes, impacts multiple features or flows
+* Large: 10+ files, new feature, API/data model changes, or design/architecture changes
+
+Escalate size by one level if the change touches:
+* auth/authorization, payments, personal data, or other critical domains
+* external dependencies or infrastructure
+* backward compatibility or public APIs
+
+Review focus:
+* Small: spec alignment, no regression, tests match intent
+* Medium: impact analysis, boundary/edge cases, regression risk, test coverage
+* Large: architecture validity, dependency direction, performance/security impact, migration/rollback plan
+
 ---
 
 ## 4. Change Output Format
