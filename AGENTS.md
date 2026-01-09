@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This document defines mandatory rules for all AI agents (including Codex) contributing to this repository.
+This document defines mandatory rules for all AI agents contributing to this repository.
 
 ---
 
