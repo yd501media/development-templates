@@ -6,7 +6,7 @@ This document defines mandatory rules for all AI agents contributing to this rep
 
 ## 1. Purpose and Scope
 
-This repository contains the source code for this product/service.
+This repository contains the application and infrastructure code for the software project described in the top-level README and product documentation.
 
 Your task is to implement features, fixes, or refactoring **only within the scope explicitly described in issues, PRs, or instructions**.
 
