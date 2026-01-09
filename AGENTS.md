@@ -51,7 +51,7 @@ Architecture rules:
 * Business logic must be separated from infrastructure or framework code
 * Do not introduce cross-layer dependencies
 
-## Coding Standards (Lint/Format)
+### 3.1 Lint and Format Requirements
 
 * Style source of truth is lint/format config files in the repo (e.g., .eslintrc, .prettierrc, pyproject.toml, .flake8, .golangci.yml)
 * Linting and formatting are mandatory for all code changes
