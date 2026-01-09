@@ -11,9 +11,9 @@ This document records decisions made during the initial setup of AGENTS.md.
 
 ## Lint/Format Policy
 
-- JavaScript/TypeScript: ESLint + Prettier.
-- Python: Black + Flake8.
-- Go: gofmt + golangci-lint.
+- JavaScript/TypeScript: ESLint + Prettier
+- Python: Black + Flake8
+- Go: gofmt + golangci-lint
 - Linting and formatting are mandatory for all code changes.
 
 ## Review Scope by Change Size
