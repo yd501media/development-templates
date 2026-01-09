@@ -1,0 +1,19 @@
+name: Chore
+description: Maintenance work (deps, tooling, CI, docs).
+title: "[Chore] "
+labels: ["chore"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      placeholder: |
+        - CI passes
+        - Manual check: ...

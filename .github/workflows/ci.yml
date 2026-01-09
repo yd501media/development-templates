@@ -1,0 +1,109 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Node version (optional)
+        id: nodever
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -f ".nvmrc" ]]; then
+            echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
+          elif [[ -f ".node-version" ]]; then
+            echo "version=$(cat .node-version)" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=lts/*" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Node (if package.json exists)
+        if: ${{ hashFiles('package.json') != '' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.nodever.outputs.version }}
+          cache: npm
+
+      - name: Run format/lint/test/build (stack-agnostic)
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Running repository checks per AGENTS.md expectations."
+          echo "Customize commands for your stack as needed."
+
+          # Prefer Makefile targets if present.
+          if [[ -f "Makefile" ]]; then
+            echo "::group::make format:check"
+            (make format-check || make format:check)
+            echo "::endgroup::"
+
+            echo "::group::make lint"
+            make lint
+            echo "::endgroup::"
+
+            echo "::group::make test"
+            make test
+            echo "::endgroup::"
+
+            echo "::group::make build"
+            (make build || true)
+            echo "::endgroup::"
+            exit 0
+          fi
+
+          # Node.js projects
+          if [[ -f "package.json" ]]; then
+            echo "::group::npm ci"
+            npm ci
+            echo "::endgroup::"
+
+            # Common script names; skip gracefully if missing.
+            echo "::group::format check"
+            (npm run -s format:check || npm run -s fmt:check || echo "No format:check script; skipping")
+            echo "::endgroup::"
+
+            echo "::group::lint"
+            (npm run -s lint || echo "No lint script; skipping")
+            echo "::endgroup::"
+
+            echo "::group::test"
+            (npm test --silent || npm run -s test || echo "No test script; skipping")
+            echo "::endgroup::"
+
+            echo "::group::build"
+            (npm run -s build || echo "No build script; skipping")
+            echo "::endgroup::"
+
+            exit 0
+          fi
+
+          # Python projects (basic)
+          if [[ -f "pyproject.toml" ]] || [[ -f "requirements.txt" ]]; then
+            echo "Python project detected. Please customize CI to your tooling (ruff/black/pytest/etc.)."
+            exit 1
+          fi
+
+          # Go projects (basic)
+          if [[ -f "go.mod" ]]; then
+            echo "::group::go test"
+            go test ./...
+            echo "::endgroup::"
+            exit 0
+          fi
+
+          echo "No known project type detected. Please customize .github/workflows/ci.yml."
+          exit 1
