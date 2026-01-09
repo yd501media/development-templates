@@ -80,6 +80,20 @@ Review focus:
 * Medium: impact analysis, boundary/edge cases, regression risk, test coverage
 * Large: architecture validity, dependency direction, performance/security impact, migration/rollback plan
 
+## Architecture Boundaries
+
+Layers:
+* Interface/API: controllers, handlers, UI entry points
+* Application: use cases, orchestration, transactions
+* Domain: business rules, entities, value objects
+* Infrastructure: DB, external services, frameworks, adapters
+
+Rules:
+* Dependencies flow inward only (Interface -> Application -> Domain)
+* Domain must not depend on Infrastructure, frameworks, or external services
+* Infrastructure implements interfaces defined by inner layers
+* Cross-layer shortcuts are prohibited; exceptions require explicit justification
+
 ---
 
 ## 4. Change Output Format
