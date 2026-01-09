@@ -94,6 +94,17 @@ Rules:
 * Infrastructure implements interfaces defined by inner layers
 * Cross-layer shortcuts are prohibited; exceptions require explicit justification
 
+## Dependency Add/Update Review Criteria
+
+All dependency changes must document:
+
+* Necessity: why existing dependencies or stdlib are insufficient
+* Maintenance: project activity, update cadence, and risk of breaking changes
+* Security: known vulnerabilities, license compatibility, and SCA results
+* Impact: bundle size/build time/runtime performance
+* Compatibility: supported runtimes and version pinning strategy
+* Rollback: how to revert if issues occur
+
 ---
 
 ## 4. Change Output Format
