@@ -105,6 +105,19 @@ All dependency changes must document:
 * Compatibility: supported runtimes and version pinning strategy
 * Rollback: how to revert if issues occur
 
+## Exception Handling (Testing/Risk)
+
+Exceptions are allowed only with explicit documentation.
+
+Required record:
+* Reason for exception
+* Scope/impact assessment
+* Alternative verification steps
+* Risk acceptance owner/approver
+* Expiration date and follow-up plan
+
+Exceptions must be documented in the PR description (and linked issue if applicable).
+
 ---
 
 ## 4. Change Output Format
