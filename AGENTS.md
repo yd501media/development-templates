@@ -61,7 +61,7 @@ Architecture rules:
 * CI must run lint/format; failures must be fixed before merge
 * Exceptions require explicit justification
 
-## Review Scope by Change Size
+### 3.2 Review Scope by Change Size
 
 Change size is determined by impact and risk, not only file/line count.
 
@@ -80,7 +80,7 @@ Review focus:
 * Medium: impact analysis, boundary/edge cases, regression risk, test coverage
 * Large: architecture validity, dependency direction, performance/security impact, migration/rollback plan
 
-## Architecture Boundaries
+### 3.3 Architecture Boundaries
 
 Layers:
 * Interface/API: controllers, handlers, UI entry points
@@ -94,7 +94,7 @@ Rules:
 * Infrastructure implements interfaces defined by inner layers
 * Cross-layer shortcuts are prohibited; exceptions require explicit justification
 
-## Dependency Add/Update Review Criteria
+### 3.4 Dependency Add/Update Review Criteria
 
 All dependency changes must document:
 
@@ -105,7 +105,7 @@ All dependency changes must document:
 * Compatibility: supported runtimes and version pinning strategy
 * Rollback: how to revert if issues occur
 
-## Exception Handling (Testing/Risk)
+### 3.5 Exception Handling (Testing/Risk)
 
 Exceptions are allowed only with explicit documentation.
 
