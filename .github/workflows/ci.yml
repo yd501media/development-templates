@@ -80,19 +80,37 @@ jobs:
 
             # Common script names; skip gracefully if missing.
             echo "::group::format check"
-            (npm run -s format:check || npm run -s fmt:check || echo "No format:check script; skipping")
+            if node -e "process.exit((require('./package.json').scripts || {})['format:check'] ? 0 : 1)"; then
+              npm run -s format:check
+            elif node -e "process.exit((require('./package.json').scripts || {})['fmt:check'] ? 0 : 1)"; then
+              npm run -s fmt:check
+            else
+              echo "No format:check script; skipping"
+            fi
             echo "::endgroup::"
 
             echo "::group::lint"
-            (npm run -s lint || echo "No lint script; skipping")
+            if node -e "process.exit((require('./package.json').scripts || {}).lint ? 0 : 1)"; then
+              npm run -s lint
+            else
+              echo "No lint script; skipping"
+            fi
             echo "::endgroup::"
 
             echo "::group::test"
-            (npm test --silent || npm run -s test || echo "No test script; skipping")
+            if node -e "process.exit((require('./package.json').scripts || {}).test ? 0 : 1)"; then
+              npm test --silent
+            else
+              echo "No test script; skipping"
+            fi
             echo "::endgroup::"
 
             echo "::group::build"
-            (npm run -s build || echo "No build script; skipping")
+            if node -e "process.exit((require('./package.json').scripts || {}).build ? 0 : 1)"; then
+              npm run -s build
+            else
+              echo "No build script; skipping"
+            fi
             echo "::endgroup::"
 
             exit 0
