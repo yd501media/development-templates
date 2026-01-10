@@ -19,7 +19,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/dependency-review-action@v4
 
   # Optional: enable CodeQL by customizing languages and permissions.
@@ -31,7 +31,7 @@ jobs:
   #     contents: read
   #     security-events: write
   #   steps:
-  #     - uses: actions/checkout@v4
+  #     - uses: actions/checkout@v6
   #     - uses: github/codeql-action/init@v3
   #       with:
   #         languages: javascript,python,go
