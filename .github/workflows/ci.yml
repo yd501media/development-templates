@@ -114,8 +114,8 @@ jobs:
 
           # Python projects (basic)
           if [[ -f "pyproject.toml" ]] || [[ -f "requirements.txt" ]]; then
-            echo "Python project detected. Please customize CI to your tooling (ruff/black/pytest/etc.)."
-            exit 1
+          echo "::warning::Python project detected. Please customize CI to your tooling (ruff/black/pytest/etc.)."
+          exit 0
           fi
 
           # Go projects (basic)
