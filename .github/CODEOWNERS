@@ -6,4 +6,4 @@
 # /src/payments/    @payments-team
 # /docs/            @docs-owners
 
-* @repo-owners
+# * @repo-owners  # TODO: replace with actual GitHub usernames or teams, e.g. @org/team-name
