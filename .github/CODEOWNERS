@@ -1,0 +1,9 @@
+# Define code ownership for automatic review routing.
+# Replace placeholders with your GitHub users/teams.
+#
+# Examples:
+# /src/auth/        @security-reviewers
+# /src/payments/    @payments-team
+# /docs/            @docs-owners
+
+# * @repo-owners  # TODO: replace with actual GitHub usernames or teams, e.g. @org/team-name

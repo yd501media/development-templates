@@ -1,0 +1,31 @@
+name: Refactor
+description: Non-functional change; no behavior change intended.
+title: "[Refactor] "
+labels: ["refactor"]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: What pain does this address (maintainability, complexity, performance risks)?
+    validations:
+      required: true
+
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-goals
+      description: Explicitly confirm no behavior change, and what will not be done.
+      placeholder: |
+        - No user-facing behavior change
+        - No API contract change
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification plan
+      description: Tests to run, and how to ensure no behavior change.
+    validations:
+      required: true

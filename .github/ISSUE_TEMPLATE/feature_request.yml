@@ -1,0 +1,43 @@
+name: Feature request
+description: Propose a user-facing feature or capability.
+title: "[Feature] "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose / background
+      description: Why is this needed? What problem does it solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: In scope
+      description: What must be included.
+    validations:
+      required: true
+
+  - type: textarea
+    id: out_scope
+    attributes:
+      label: Out of scope
+      description: Explicitly list what is not included.
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks / constraints
