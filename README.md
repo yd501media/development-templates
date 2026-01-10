@@ -17,3 +17,10 @@ flow through PRs:
 ```
 git config core.hooksPath .githooks
 ```
+
+This template ships with local githooks for:
+- blocking commits to `main`
+- blocking direct pushes to `main`
+- enforcing Conventional Commits
+- preventing accidental commits of dependencies/build outputs and large files
+- running minimal lint/test checks before push when available
