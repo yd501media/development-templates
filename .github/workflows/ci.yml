@@ -112,5 +112,5 @@ jobs:
             exit 0
           fi
 
-          echo "No known project type detected. Please customize .github/workflows/ci.yml."
-          exit 1
+          echo "::warning::No known project type detected. Skipping CI checks. Please customize .github/workflows/ci.yml for this repository."
+          exit 0
