@@ -10,3 +10,10 @@ assignment works as expected.
 
 If you use ecosystems beyond npm, add them to `.github/dependabot.yml` so updates
 are tracked.
+
+Enable local Git hooks so direct commits/pushes to `main` are blocked and changes
+flow through PRs:
+
+```
+git config core.hooksPath .githooks
+```

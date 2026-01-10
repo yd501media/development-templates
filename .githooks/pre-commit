@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '')"
+if [ "$branch" = "main" ]; then
+  echo "Error: direct commits to 'main' are blocked. Use a feature branch and open a PR." >&2
+  exit 1
+fi
