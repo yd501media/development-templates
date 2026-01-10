@@ -67,7 +67,7 @@ jobs:
             echo "::endgroup::"
 
             echo "::group::make build"
-            (make build || true)
+            make build
             echo "::endgroup::"
             exit 0
           fi
