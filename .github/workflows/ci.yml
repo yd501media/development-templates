@@ -48,7 +48,14 @@ jobs:
           # Prefer Makefile targets if present.
           if [[ -f "Makefile" ]]; then
             echo "::group::make format:check"
-            (make format-check || make format:check)
+            if make -n format-check >/dev/null 2>&1; then
+              make format-check
+            elif make -n format:check >/dev/null 2>&1; then
+              make format:check
+            else
+              echo "No 'format-check' or 'format:check' target found in Makefile; failing CI."
+              exit 1
+            fi
             echo "::endgroup::"
 
             echo "::group::make lint"
