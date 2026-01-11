@@ -8,9 +8,9 @@ workflow, standards, and checks for this repository.
 - Avoid speculative features, optimizations, or requirement changes.
 
 ## Workflow
-1. Create a feature branch (do not work directly on `main`).
+1. Create a feature branch; direct commits to `main` are prohibited.
 2. Implement changes with review-ready quality.
-3. Open a Pull Request and follow the PR template.
+3. Open a Pull Request and follow the PR template for required sections.
 
 ## Coding Standards
 - Follow existing architecture and conventions.
@@ -41,6 +41,7 @@ Replace this section with concrete style/formatting examples once established.
 ## Pull Requests
 - One logical change per PR; avoid mixing refactors with behavior changes.
 - Include motivation, design decisions, impact, verification, and rollback plan.
+- PRs are required for all changes, including documentation and tooling updates.
 - Disclose AI assistance when used.
 
 ## Commit Messages
