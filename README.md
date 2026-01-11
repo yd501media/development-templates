@@ -1,6 +1,6 @@
 # development-templates
 
-## Setup Notes
+## Template Setup
 
 When creating a new repository from this template, enable GitHub's Dependency graph
 in repository settings so the security workflow can run dependency review checks.
@@ -10,6 +10,8 @@ assignment works as expected.
 
 If you use ecosystems beyond npm, add them to `.github/dependabot.yml` so updates
 are tracked.
+
+## Git Hooks
 
 Enable local Git hooks so direct commits/pushes to `main` are blocked and changes
 flow through PRs:
