@@ -32,3 +32,4 @@ if [ -f "package.json" ]; then
 fi
 
 echo "No lint/test hooks configured for this repository; skipping." >&2
+exit 0
