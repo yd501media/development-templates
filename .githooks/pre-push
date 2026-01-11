@@ -81,8 +81,8 @@ if [ -f "package.json" ]; then
 fi
 
 if [ -f "pyproject.toml" ] || [ -f "requirements.txt" ]; then
-  echo "Python project detected. Customize pre-push to your tooling (ruff/black/pytest/etc.)." >&2
-  ran_checks=1
+  echo "Error: Python project detected but no pre-push checks are configured. Customize this hook for your tooling (ruff/black/pytest/etc.)." >&2
+  exit 1
 fi
 
 if [ -f "go.mod" ]; then
