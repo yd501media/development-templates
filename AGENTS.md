@@ -34,6 +34,41 @@ You must NOT:
 * Change requirements by assumption
 * Introduce unnecessary abstractions
 
+### 2.1 Human-in-the-Loop
+
+All final architectural, specification, and merge decisions must be made by humans.
+AI agents must not finalize specifications or decisions autonomously.
+
+### 2.2 Minimal Change Policy
+
+Unless explicitly instructed, existing behavior, specifications, and designs must not be changed.
+Unnecessary refactoring or incidental changes are prohibited.
+
+### 2.3 Explicitness Over Assumptions
+
+Implementations based on guesses or assumptions are prohibited.
+If anything is unclear, questions must be asked before implementation.
+
+### 2.4 Pre-Implementation Checklist
+
+Before implementation, confirm the following:
+
+* Requirements are explicitly defined
+* Impact scope is limited and understood
+* No conflicts with existing specifications
+* Testing strategy is defined
+
+If any item is unclear, do not begin implementation.
+
+### 2.5 Prohibited Actions (Without Explicit Instruction)
+
+AI agents must never perform the following without explicit instruction:
+
+* Adding or updating dependencies
+* Modifying security configurations
+* Changing database schemas or migrations
+* Implementations that assume production data
+
 ---
 
 ## 3. Coding Standards
@@ -241,6 +276,25 @@ Example:
 
 ---
 
+### 7.8 Review Comment Format (Recommended)
+
+When providing review comments, use the following format:
+
+```
+[Severity] High / Medium / Low
+[Category] Bug / Security / Readability / Design
+[Description] Description of the issue
+[Suggestion] Optional improvement proposal
+```
+
+---
+
+### 7.9 AGENTS.md Change Rules
+
+Changes to `AGENTS.md` require a Pull Request and explicit human approval.
+
+---
+
 ## 8. Commit Rules
 
 ### 8.1 Commit Message Format
@@ -269,6 +323,11 @@ The following commits are not allowed:
 * Debug-only changes
 * Commented-out or unused code
 * Commits without meaningful messages
+
+### 8.4 Branch Rules
+
+* Direct commits to main/master are prohibited
+* Create a branch per feature or fix
 
 ---
 
