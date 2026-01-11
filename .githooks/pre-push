@@ -9,6 +9,7 @@ while read -r _local_ref _local_sha _remote_ref _remote_sha; do
 done
 
 # Run minimal lint/test/build checks when available.
+ran_checks=0
 if [ -f "Makefile" ]; then
   echo "Running make format-check..."
   if make -n format-check >/dev/null 2>&1; then
@@ -39,7 +40,7 @@ if [ -f "Makefile" ]; then
   else
     echo "No 'build' target found in Makefile; skipping." >&2
   fi
-  exit 0
+  ran_checks=1
 fi
 
 if [ -f "package.json" ]; then
@@ -76,19 +77,21 @@ if [ -f "package.json" ]; then
   else
     echo "No build script; skipping."
   fi
-  exit 0
+  ran_checks=1
 fi
 
 if [ -f "pyproject.toml" ] || [ -f "requirements.txt" ]; then
   echo "Python project detected. Customize pre-push to your tooling (ruff/black/pytest/etc.)." >&2
-  exit 0
+  ran_checks=1
 fi
 
 if [ -f "go.mod" ]; then
   echo "Running go test ./..."
   go test ./...
-  exit 0
+  ran_checks=1
 fi
 
-echo "No lint/test hooks configured for this repository; skipping." >&2
+if [ "$ran_checks" -eq 0 ]; then
+  echo "No lint/test hooks configured for this repository; skipping." >&2
+fi
 exit 0
