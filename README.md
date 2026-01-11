@@ -20,7 +20,7 @@ flow through PRs:
 git config core.hooksPath .githooks
 ```
 
-This template ships with local githooks for:
+This template ships with local Git hooks for:
 - blocking commits to `main`
 - blocking direct pushes to `main`
 - enforcing Conventional Commits
