@@ -37,7 +37,7 @@ if [ -f "Makefile" ]; then
   if make -n build >/dev/null 2>&1; then
     make build
   else
-    echo "No 'build' target found in Makefile; skipping."
+    echo "No 'build' target found in Makefile; skipping." >&2
   fi
   exit 0
 fi
