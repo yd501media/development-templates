@@ -64,6 +64,7 @@ Enabled hooks enforce:
 ## Security
 - Never log secrets, credentials, tokens, or personal data.
 - Validate external inputs and keep existing security checks intact.
+- For reporting vulnerabilities, see `SECURITY.md`.
 
 ## Questions
 If anything is unclear, ask for clarification before proceeding.
