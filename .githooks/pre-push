@@ -17,7 +17,7 @@ if [ -f "Makefile" ]; then
   elif make -n format:check >/dev/null 2>&1; then
     make format:check
   else
-    echo "No 'format-check' or 'format:check' target found in Makefile; skipping format check." >&2
+    echo "No 'format-check' or 'format:check' target found in Makefile. Add one of these targets, or keep skipping format checks for this repository." >&2
   fi
 
   echo "Running make lint..."
