@@ -8,26 +8,70 @@ while read -r _local_ref _local_sha _remote_ref _remote_sha; do
   fi
 done
 
-# Run minimal lint/test checks when available.
+# Run minimal lint/test/build checks when available.
 if [ -f "Makefile" ]; then
-  if make -n lint >/dev/null 2>&1; then
-    echo "Running make lint..."
-    make lint
+  echo "Running make format-check..."
+  if make -n format-check >/dev/null 2>&1; then
+    make format-check
+  elif make -n format:check >/dev/null 2>&1; then
+    make format:check
+  else
+    echo "No 'format-check' or 'format:check' target found in Makefile; failing pre-push." >&2
+    exit 1
   fi
-  if make -n test >/dev/null 2>&1; then
-    echo "Running make test..."
-    make test
-  fi
+
+  echo "Running make lint..."
+  make lint
+
+  echo "Running make test..."
+  make test
+
+  echo "Running make build..."
+  make build
   exit 0
 fi
 
 if [ -f "package.json" ]; then
+  echo "Running npm install..."
+  npm install
+
+  if node -e "process.exit((require('./package.json').scripts || {})['format:check'] ? 0 : 1)"; then
+    echo "Running npm run format:check..."
+    npm run -s format:check
+  elif node -e "process.exit((require('./package.json').scripts || {})['fmt:check'] ? 0 : 1)"; then
+    echo "Running npm run fmt:check..."
+    npm run -s fmt:check
+  else
+    echo "No format:check script; skipping."
+  fi
+
   if node -e "process.exit((require('./package.json').scripts || {}).lint ? 0 : 1)"; then
     echo "Running npm run lint..."
     npm run -s lint
+  else
+    echo "No lint script; skipping."
   fi
+
   echo "Running npm test..."
   npm test --silent --if-present
+
+  if node -e "process.exit((require('./package.json').scripts || {}).build ? 0 : 1)"; then
+    echo "Running npm run build..."
+    npm run -s build
+  else
+    echo "No build script; skipping."
+  fi
+  exit 0
+fi
+
+if [ -f "pyproject.toml" ] || [ -f "requirements.txt" ]; then
+  echo "Python project detected. Customize pre-push to your tooling (ruff/black/pytest/etc.)." >&2
+  exit 0
+fi
+
+if [ -f "go.mod" ]; then
+  echo "Running go test ./..."
+  go test ./...
   exit 0
 fi
 
