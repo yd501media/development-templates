@@ -17,13 +17,15 @@ fi
 
 # Block large files (>5MB) from being committed.
 max_bytes=$((5 * 1024 * 1024))
-for path in $staged_files; do
-  object_id="$(git rev-parse --verify ":$path" 2>/dev/null || true)"
-  if [ -n "$object_id" ]; then
-    size="$(git cat-file -s "$object_id" 2>/dev/null || echo 0)"
-    if [ "$size" -gt "$max_bytes" ]; then
-      echo "Error: '$path' is larger than 5MB; use Git LFS or reduce file size." >&2
-      exit 1
+if [ -n "$staged_files" ]; then
+  printf '%s\n' "$staged_files" | while IFS= read -r path; do
+    object_id="$(git rev-parse --verify ":$path" 2>/dev/null || true)"
+    if [ -n "$object_id" ]; then
+      size="$(git cat-file -s "$object_id" 2>/dev/null || echo 0)"
+      if [ "$size" -gt "$max_bytes" ]; then
+        echo "Error: '$path' is larger than 5MB; use Git LFS or reduce file size." >&2
+        exit 1
+      fi
     fi
-  fi
-done
+  done
+fi
