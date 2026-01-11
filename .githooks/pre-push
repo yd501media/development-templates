@@ -17,28 +17,28 @@ if [ -f "Makefile" ]; then
   elif make -n format:check >/dev/null 2>&1; then
     make format:check
   else
-    echo "No 'format-check' or 'format:check' target found in Makefile. Add one of these targets, or keep skipping format checks for this repository." >&2
+    echo "No 'format-check' or 'format:check' target found in Makefile; skipping."
   fi
 
   echo "Running make lint..."
   if make -n lint >/dev/null 2>&1; then
     make lint
   else
-    echo "No 'lint' target found in Makefile; skipping."
+    echo "No lint target found in Makefile; skipping."
   fi
 
   echo "Running make test..."
   if make -n test >/dev/null 2>&1; then
     make test
   else
-    echo "No 'test' target found in Makefile; skipping."
+    echo "No test target found in Makefile; skipping."
   fi
 
   echo "Running make build..."
   if make -n build >/dev/null 2>&1; then
     make build
   else
-    echo "No 'build' target found in Makefile; skipping." >&2
+    echo "No build target found in Makefile; skipping."
   fi
   ran_checks=1
 fi
