@@ -26,3 +26,9 @@ This template ships with local Git hooks for:
 - enforcing Conventional Commits
 - preventing accidental commits of dependencies/build outputs and large files
 - running minimal lint/test checks before push when available
+
+## AI Agent Guidance
+
+This repository uses `AGENTS.md` as the source of truth for AI agent behavior,
+scope, and constraints. If you use an AI agent to assist with changes, ensure
+it follows the rules in `AGENTS.md` and disclose AI assistance in the PR.
