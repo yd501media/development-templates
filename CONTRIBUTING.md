@@ -21,6 +21,18 @@ workflow, standards, and checks for this repository.
 - Use repository lint/format configs as the source of truth.
 - Ensure all lint/format checks pass before requesting review.
 
+## Development Environment (TBD)
+Replace this section with required tools and versions once the stack is decided.
+
+## Local Development Commands (TBD)
+Replace this section with the expected local run commands (e.g., `make`, `npm`, `go`).
+
+## Test Commands (TBD)
+Replace this section with the standard test commands for the project.
+
+## Code Style Examples (TBD)
+Replace this section with concrete style/formatting examples once established.
+
 ## Testing
 - Add or update tests for behavior changes.
 - Bug fixes require regression tests.
