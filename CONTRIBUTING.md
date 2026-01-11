@@ -41,7 +41,7 @@ Replace this section with concrete style/formatting examples once established.
 ## Pull Requests
 - One logical change per PR; avoid mixing refactors with behavior changes.
 - Include motivation, design decisions, impact, verification, and rollback plan.
-- PRs are required for all changes; direct changes on `main` are not allowed.
+- PRs are required for all changes, including documentation and tooling updates.
 - Disclose AI assistance when used.
 
 ## Commit Messages
