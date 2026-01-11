@@ -1,0 +1,35 @@
+#!/bin/sh
+set -eu
+
+while read -r _local_ref _local_sha _remote_ref _remote_sha; do
+  if [ "$_remote_ref" = "refs/heads/main" ] || [ "$_local_ref" = "refs/heads/main" ]; then
+    echo "Error: direct pushes to 'main' are blocked. Use a PR workflow." >&2
+    exit 1
+  fi
+done
+
+# Run minimal lint/test checks when available.
+if [ -f "Makefile" ]; then
+  if make -n lint >/dev/null 2>&1; then
+    echo "Running make lint..."
+    make lint
+  fi
+  if make -n test >/dev/null 2>&1; then
+    echo "Running make test..."
+    make test
+  fi
+  exit 0
+fi
+
+if [ -f "package.json" ]; then
+  if node -e "process.exit((require('./package.json').scripts || {}).lint ? 0 : 1)"; then
+    echo "Running npm run lint..."
+    npm run -s lint
+  fi
+  echo "Running npm test..."
+  npm test --silent --if-present
+  exit 0
+fi
+
+echo "No lint/test hooks configured for this repository; skipping." >&2
+exit 0
