@@ -29,3 +29,11 @@ if [ -n "$staged_files" ]; then
     fi
   done
 fi
+
+# Scan staged changes for secrets before each commit.
+if command -v gitleaks >/dev/null 2>&1; then
+  git diff --cached -U0 --no-color | gitleaks detect --pipe --redact
+else
+  echo "Error: gitleaks is required. Install with 'brew install gitleaks'." >&2
+  exit 1
+fi
