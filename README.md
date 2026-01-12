@@ -33,6 +33,8 @@ The pre-commit hook requires gitleaks. Install it with:
 brew install gitleaks
 ```
 
+Note: this command is macOS-specific. On Linux/Windows, install gitleaks using your OS package manager or the official releases.
+
 ## AI Agent Guidance
 
 This repository uses `AGENTS.md` as the source of truth for AI agent behavior,
