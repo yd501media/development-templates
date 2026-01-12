@@ -27,6 +27,12 @@ This template ships with local Git hooks for:
 - preventing accidental commits of dependencies/build outputs and large files
 - running minimal lint/test checks before push when available
 
+The pre-commit hook requires gitleaks. Install it with:
+
+```
+brew install gitleaks
+```
+
 ## AI Agent Guidance
 
 This repository uses `AGENTS.md` as the source of truth for AI agent behavior,
