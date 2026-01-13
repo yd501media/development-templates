@@ -69,7 +69,7 @@ Note: this command is macOS-specific. On Linux/Windows, install GPG using your O
 
 ### Signing and Permissions
 
-- Prefer signed tags (GPG or Sigstore) when possible.
+- Use signed tags (GPG).
 - Limit tag creation to release owners if your platform supports it.
 
 ### Release Notes
