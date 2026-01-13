@@ -26,21 +26,39 @@ auditable release process.
 
 ## Tag Creation
 
-- Prefer signed tags when possible (GPG or Sigstore).
+- Use signed tags (GPG).
+- Install GPG with Homebrew on macOS:
+
+```
+brew install gpg
+```
+
+Note: this command is macOS-specific. On Linux/Windows, install GPG using your OS package manager or the official releases.
 - Limit tag creation to release owners if your platform supports it.
 
-Example (unsigned):
+Example (signed with multi-line message):
 
 ```
-git tag v1.2.3
-git push origin v1.2.3
-```
-
-Example (signed):
-
-```
-git tag -s v1.2.3 -m "Release v1.2.3"
-git push origin v1.2.3
+git tag -s v1.1.1 -m "Release v1.1.1" -m "" \
+  -m "Fix" \
+  -m "- resolve validation error in checkout flow" \
+  -m "- correct rounding in totals" \
+  -m "- align client and server error messages" \
+  -m "" \
+  -m "Docs" \
+  -m "- add release and tagging guide" \
+  -m "" \
+  -m "Chore" \
+  -m "- update lint rules" \
+  -m "- tighten type guards" \
+  -m "- clean unused assets" \
+  -m "" \
+  -m "Dependencies/CI" \
+  -m "- bump actions/setup-node to v4" \
+  -m "- bump actions/checkout to v4" \
+  -m "- bump actions/upload-artifact to v4" \
+  -m "- update eslint and related plugins"
+git push origin v1.1.1
 ```
 
 ## Release Notes
@@ -48,10 +66,11 @@ git push origin v1.2.3
 - Link tags to release notes (for example, GitHub Releases).
 - Summarize changes by type: Breaking / Feature / Fix.
 
-## Tag Message Source
+## Tag Message Format
 
 - Use Git local history only when creating tag messages.
-- Collect commit messages since the previous tag and summarize them.
+- Start the tag message with "Release vX.Y.Z".
+- Append multi-line entries after the title to summarize changes.
 - Do not require PR metadata or external APIs.
 
 ## Rollback

@@ -42,6 +42,16 @@ across project types.
 
 For more detail, see `docs/release.md`.
 
+### Setup
+
+Signed tags require GPG. Install it with:
+
+```
+brew install gpg
+```
+
+Note: this command is macOS-specific. On Linux/Windows, install GPG using your OS package manager or the official releases.
+
 ### Purpose
 
 - Identify release artifacts and make rollbacks easy.
@@ -59,7 +69,7 @@ For more detail, see `docs/release.md`.
 
 ### Signing and Permissions
 
-- Prefer signed tags (GPG or Sigstore) when possible.
+- Use signed tags (GPG).
 - Limit tag creation to release owners if your platform supports it.
 
 ### Release Notes
