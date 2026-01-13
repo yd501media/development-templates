@@ -48,8 +48,13 @@ git push origin v1.2.3
 - Link tags to release notes (for example, GitHub Releases).
 - Summarize changes by type: Breaking / Feature / Fix.
 
+## Tag Message Source
+
+- Use Git local history only when creating tag messages.
+- Collect commit messages since the previous tag and summarize them.
+- Do not require PR metadata or external APIs.
+
 ## Rollback
 
 - If a tag is incorrect, delete it and create a new tag with a new version.
 - Avoid reusing the same tag name to preserve auditability.
-
