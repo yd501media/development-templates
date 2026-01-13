@@ -40,6 +40,8 @@ Note: this command is macOS-specific. On Linux/Windows, install gitleaks using y
 This template recommends a minimal, general-purpose tagging policy that works
 across project types.
 
+For more detail, see `docs/release.md`.
+
 ### Purpose
 
 - Identify release artifacts and make rollbacks easy.
