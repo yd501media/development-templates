@@ -35,6 +35,43 @@ brew install gitleaks
 
 Note: this command is macOS-specific. On Linux/Windows, install gitleaks using your OS package manager or the official releases.
 
+## Tagging Policy
+
+This template recommends a minimal, general-purpose tagging policy that works
+across project types.
+
+For more detail, see `docs/release.md`.
+
+### Purpose
+
+- Identify release artifacts and make rollbacks easy.
+- Keep release notes and version history consistent.
+
+### Naming
+
+- Release tags use SemVer: `vX.Y.Z` (example: `v1.2.3`).
+- Release candidates (optional): `vX.Y.Z-rc.N`.
+
+### When to Tag
+
+- Tag only release-ready commits on the primary release branch.
+- Do not move tags once created.
+
+### Signing and Permissions
+
+- Prefer signed tags (GPG or Sigstore) when possible.
+- Limit tag creation to release owners if your platform supports it.
+
+### Release Notes
+
+- Link tags to release notes (e.g., GitHub Releases).
+- Describe changes by type (Breaking/Feature/Fix).
+
+### Rollback
+
+- If a tag is incorrect, delete it and create a new tag.
+- Avoid retagging the same name to preserve auditability.
+
 ## AI Agent Guidance
 
 This repository uses `AGENTS.md` as the source of truth for AI agent behavior,
