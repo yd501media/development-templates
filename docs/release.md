@@ -58,7 +58,7 @@ git tag -s v1.1.1 -m "Release v1.1.1" -m "" \
   -m "- bump actions/checkout to v4" \
   -m "- bump actions/upload-artifact to v4" \
   -m "- update eslint and related plugins"
-git push origin v1.2.3
+git push origin v1.1.1
 ```
 
 ## Release Notes
