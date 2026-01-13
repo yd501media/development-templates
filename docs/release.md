@@ -66,7 +66,7 @@ git push origin v1.2.3
 - Link tags to release notes (for example, GitHub Releases).
 - Summarize changes by type: Breaking / Feature / Fix.
 
-## Tag Message Source
+## Tag Message Format
 
 - Use Git local history only when creating tag messages.
 - Start the tag message with "Release vX.Y.Z".
